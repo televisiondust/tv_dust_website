@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="astro-5TXEAL4L"><head>
+<!DOCTYPE html><html lang="en" class="astro-IXPRV4YT"><head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="description" content="Television Dust is a new media visual art duo based in Chennai-IN. They work with code and tech to create generative art. ">
@@ -12,229 +12,50 @@
 
 
 
-<script type="module" src="./assets/index.52cd3094.js"></script><link rel="stylesheet" href="./assets/Header.vue_vue_type_style_index_0_lang.f00aec76.css"><link rel="stylesheet" href="./assets/index.f4aed947.css">
+<script type="module" src="./assets/index.641c2c2b.js"></script><link rel="stylesheet" href="./assets/Header.vue_vue_type_style_index_0_lang.f00aec76.css"><link rel="stylesheet" href="./assets/index.5efdcffd.css">
 </head>
 
 <body>
-	<main class="astro-5TXEAL4L">
-		<astro-root uid="Z16zclX"><div class="headercont astro-5TXEAL4L"><header class="flex items-center py-0 md:py-8"><div class="header__logo"><a href="/"><h1 class="invisible">Television dust</h1><img src="/assets/tvdustlogo.png" alt="Logo"></a></div></header><nav class="nav ml-auto flex items-center"><ul class="flex items-center sm:mt-4 sm:pt-4 md:mt-0 md:pt-0 md:mr-4 lg:mr-8"><li class="block font-medium px-4 py-1 md:p-2 lg:px-4"><a href="/projects">Projects</a></li><li><button class="block font-medium px-4 py-1 md:p-2 lg:px-4">Contact us</button></li></ul></nav><!----><!----></div></astro-root>
-
+	<main class="astro-IXPRV4YT">
+		<astro-root uid="1rv0YO"><div class="headercont astro-IXPRV4YT"><header class="flex items-center py-0 md:py-8"><div class="header__logo"><a href="/"><h1 class="invisible">Television dust</h1><img src="/assets/tvdustlogo.png" alt="Logo"></a></div></header><nav class="nav ml-auto flex items-center"><ul class="flex items-center sm:mt-4 sm:pt-4 md:mt-0 md:pt-0 md:mr-4 lg:mr-8"><li class="block font-medium px-4 py-1 md:p-2 lg:px-4"><a href="/projects">Projects</a></li><li><button class="block font-medium px-4 py-1 md:p-2 lg:px-4">Contact us</button></li></ul></nav><!----><!----></div></astro-root>
 		
 
-		<div class="canvasContainer relative astro-KEKU5UI2">
-			<canvas id="homecanvas" class="fixed top-1/2 left-0 transform  -translate-y-1/2 astro-KEKU5UI2"></canvas>
+		<div class="canvasContainer relative astro-JHH4P3UP">
+			<canvas id="homecanvas" class="fixed top-1/2 left-0 transform  -translate-y-1/2 astro-JHH4P3UP"></canvas>
 
 		</div>
 
         
 
-		<script type="module">
-		import * as THREE from 'three';
-		import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-		// let THREE = {THREE};
-		console.log({THREE});
-		let t = 1;
-		const canvas = document.querySelector('#homecanvas');
-		const scene = new THREE.Scene();
-		const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+		<script src="/assets/background.771d3545.js" type="module"></script>
+		<div class="content lg:ml-[40vw] md:mx-20 mt-10 mb-[52rem] astro-IXPRV4YT">
+		                    <h2 class="text-4xl p-10 pt-20 pb-2 pl-20 astro-IXPRV4YT">Hello</h2>
+							<img class="pl-20 pt-6 homeimg astro-IXPRV4YT" src="assets/tdphoto.jpg" alt="Photo of Television Dust">
+			<div class="p-10  pl-20 text-2xl astro-IXPRV4YT"><span class="italic astro-IXPRV4YT">Here's a little bit about us: </span><br class="astro-IXPRV4YT"><br class="astro-IXPRV4YT">
 
-		const renderer = new THREE.WebGLRenderer({
-			canvas,
-			preserveDrawingBuffer: true,
-			antialias: true,
-
-		});
-
-
-		renderer.autoClearColor = false;
-		renderer.clear();
-		renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-
-
-		const controls = new OrbitControls(camera, renderer.domElement);
-
-		// const geometry = new THREE.PlaneGeometry(1, 1, 40, 40);
-		const geometry = new THREE.BoxGeometry(1, 1, 1, 100, 100, 100);
-
-		// const geometry = new THREE.SphereGeometry(100,10,10,0,Math.PI*2,0,Math.PI);
-		const tex = new THREE.TextureLoader().load("assets/art2.png");
-
-		// const material = new THREE.MeshBasicMaterial({color:0xffffff});
-		// material.map= tex;
-		// material.side = THREE.DoubleSide;
-
-		const uniforms = {
-			tex: {
-				value: tex
-			},
-			time: {
-				value: 0.0
-			},
-			l: {
-				value: 1.0
-			}
-
-		};
-
-		const material = new THREE.ShaderMaterial({
-			uniforms: uniforms,
-			vertexShader: vertexShader(),
-			fragmentShader: fragShader(),
-			wireframe: true,
-		})
-
-		material.uniformsNeedUpdate = true;
-		const light = new THREE.DirectionalLight(0xff2fff, 2);
-		const lightfill = new THREE.DirectionalLight(0x00ffff, 1);
-		lightfill.position.set(-1, -2, -1);
-
-		const mesh = new THREE.Mesh(geometry, material);
-
-		scene.add(mesh);
-		scene.add(light);
-		scene.add(lightfill);
-		camera.position.z = 10;
-		// camera.position.x = -0.2;
-		controls.update();
-
-		function animate() {
-			requestAnimationFrame(animate);
-			t += 1;
-			uniforms.time.value += 0.003;
-			uniforms.l.value = 1;
-			geometry.rotateX(.01);
-			geometry.rotateY(.003);
-			geometry.rotateZ(.02);
-			mesh.position.x = Math.sin(uniforms.time.value * 2) * 0.3;
-			camera.position.z = Math.sin(uniforms.time.value);
-			// camera.position.y =
-			controls.update();
-
-			renderer.render(scene, camera);
-		};
-
-		animate();
-
-
-		function vertexShader() {
-
-	return `
-	varying vec3 vUv; 
-	uniform sampler2D tex;
-	uniform float time;
-	uniform float l;
-
-	float rand(vec2 c){
-		return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453);
-	}
-	
-	float noise(vec2 p, float freq ){
-		float unit = 1.5/freq;   //screenwidth/freq
-		vec2 ij = floor(p/unit);
-		vec2 xy = mod(p,unit)/unit;
-		//xy = 3.*xy*xy-2.*xy*xy*xy;
-		xy = .5*(1.-cos(3.14*xy));
-		float a = rand((ij+vec2(0.,0.)));
-		float b = rand((ij+vec2(1.,0.)));
-		float c = rand((ij+vec2(0.,1.)));
-		float d = rand((ij+vec2(1.,1.)));
-		float x1 = mix(a, b, xy.x);
-		float x2 = mix(c, d, xy.x);
-		return mix(x1, x2, xy.y);
-	}
-	
-	float pNoise(vec2 p, int res){
-		float persistance = .5;
-		float n = 0.;
-		float normK = 0.;
-		float f = 4.;
-		float amp = 1.;
-		int iCount = 0;
-		for (int i = 0; i<50; i++){
-			n+=amp*noise(p, f);
-			f*=2.;
-			normK+=amp;
-			amp*=persistance;
-			if (iCount == res) break;
-			iCount++;
-		}
-		float nf = n/normK;
-		return nf*nf*nf*nf;
-	}
-
-    void main() {
-      vUv = position; 
-
-	  float n = pNoise(vec2(position.x+time ,position.y),100)*0.1;
-	  float r =  texture2D(tex,vUv.xy+0.5).r;
-	  float displacementHeight = .1 *r;
-	  displacementHeight += 3.0*n;
-	  vec3 mpos = position;
-	  mpos.z += displacementHeight  ;
-	  //mpos.y += texture2D(tex,vUv.xy+0.5).g*0.1;
-	  //mpos.x += texture2D(tex,vUv.xy+0.5).b*0.2;
-	  vec4 modelViewPosition = modelViewMatrix * vec4(mpos, 1.0);
-      gl_Position = projectionMatrix *modelViewPosition; 
-    }
-	`
-
-		}
-
-		function fragShader() {
-
-			return `
-
-	varying vec3 vUv;
-	uniform sampler2D tex;
-
-	void main() {
-		vec4 col = texture2D(tex,vUv.xy+0.5);
-	  gl_FragColor = vec4(col.xyz, 1.0);
-	}
-	`
-		}
-
-
-		function resizeRendererToDisplaySize(renderer) {
-			const canvas = renderer.domElement;
-			const pixelRatio = window.devicePixelRatio;
-			const width = canvas.clientWidth * pixelRatio | 0;
-			const height = canvas.clientHeight * pixelRatio | 0;
-			const needResize = canvas.width !== width || canvas.height !== height;
-			if (needResize) {
-				renderer.setSize(width, height, false);
-			}
-			return needResize;
-		}
-		</script>
-		<div class="content lg:ml-[40vw] md:mx-20 mt-10 mb-[52rem] astro-5TXEAL4L">
-		                    <h2 class="text-4xl p-10 pt-20 pb-2 pl-20 astro-5TXEAL4L">Hello</h2>
-							<img class="pl-20 pt-6 homeimg astro-5TXEAL4L" src="assets/tdphoto.jpg" alt="Photo of Television Dust">
-			<div class="p-10  pl-20 text-2xl astro-5TXEAL4L"><span class="italic astro-5TXEAL4L">Here's a little bit about us: </span><br class="astro-5TXEAL4L"><br class="astro-5TXEAL4L">
-
-				<p class="astro-5TXEAL4L">We use code and tech to deconstruct and rearrange pieces of the real world to
+				<p class="astro-IXPRV4YT">We use code and tech to deconstruct and rearrange pieces of the real world to
 					create something that takes on a life of its own. Our art explores culture and life within
 					technology.
 					Our work largely centres on themes of a post-digital world i.e. what it means to make art in a
 					non-physical/semi-physical space. We also believe that art and music are a symbiotic sensory
 					experiences and our work seeks to explore the visual nature of music and sound.
-					<br class="astro-5TXEAL4L"> <br class="astro-5TXEAL4L">
+					<br class="astro-IXPRV4YT"> <br class="astro-IXPRV4YT">
 					We use cellphone cameras, joysticks, microphones and webcams to make our art interact with the real
 					world creating a sort of Interreality.
 					We use a combination of creative coding frameworks, shaders, traditional painting and photomontage
 					to create experimental collages.
-					<br class="astro-5TXEAL4L"><br class="astro-5TXEAL4L">
+					<br class="astro-IXPRV4YT"><br class="astro-IXPRV4YT">
 					Our influences are Nam June Paik, Stan Brakhage, Sarah Sze, Wassily Kandinsky, Frantisek Kupka,
 					Hilma af Klint, KM Adimoolam, Joshua Davis and Zach Lieberman.
 
-				<br class="astro-5TXEAL4L"><br class="astro-5TXEAL4L">You can check out our work in the links below
+				<br class="astro-IXPRV4YT"><br class="astro-IXPRV4YT">You can check out our work in the links below
 				</p>
-				<br class="astro-5TXEAL4L">
-				<a href="https://www.instagram.com/television_dust/?hl=en" target="_blank" class="igbtn astro-5TXEAL4L">
-              <i class="fa-brands fa-instagram text-2xl astro-5TXEAL4L"></i>
+				<br class="astro-IXPRV4YT">
+				<a href="https://www.instagram.com/television_dust/?hl=en" target="_blank" class="igbtn astro-IXPRV4YT">
+              <i class="fa-brands fa-instagram text-2xl astro-IXPRV4YT"></i>
             </a>
-            <a href="https://www.youtube.com/channel/UCpyAj-9JTQ2xfyjHZ1W87JA" target="_blank" class="igbtn  astro-5TXEAL4L">
-              <i class="fa-brands fa-youtube text-2xl astro-5TXEAL4L"></i>
+            <a href="https://www.youtube.com/channel/UCpyAj-9JTQ2xfyjHZ1W87JA" target="_blank" class="igbtn  astro-IXPRV4YT">
+              <i class="fa-brands fa-youtube text-2xl astro-IXPRV4YT"></i>
             </a>
 
 			</div>
